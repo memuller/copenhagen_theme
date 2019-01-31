@@ -152,4 +152,22 @@ document.addEventListener('DOMContentLoaded', function() {
       this.setAttribute('aria-expanded', !isExpanded);
     });
   });
+
+  const $form = $('#custom_form');
+  
+  /** authCustomForm()
+   * habilita autenticação no formulário customizado copiando o auth_token do formulário original
+   * também remove o formulário original
+   * TODO: copiar também os atributos do form(action, data - form, etc)
+   */
+  function authCustomForm() {
+    const $requestAuthField = $('#new_request input[name=authenticity_token]');
+    const $originalForm = $('#new_request');
+
+    $form.append($requestAuthField); //move campo de autenticação p/ o formulário customizado
+    $originalForm.remove(); //destrói formulário original
+  }
+  authCustomForm();
+
+
 });
